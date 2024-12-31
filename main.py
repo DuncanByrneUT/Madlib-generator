@@ -2,7 +2,7 @@ with open("story.txt", "r") as f:
     story = f.read()
 
 # start of the program where we are beginning to look for the words the user needs to replace
-words = []
+words = set()
 start_of_word = -1
 
 target_start = "<"
@@ -14,7 +14,15 @@ for i, char in enumerate(story):
 
     if char == target_end and start_of_word != -1:
         word = story[start_of_word: i + 1]
-        words.append(word)
+        words.add(word)
         start_of_word = - 1
 
-    print(words)
+# answers
+
+answers = {}
+
+for word in words:
+    answer = input("enter a word for " + word + ": ")
+    answers[word] = answer
+
+print(answers)
